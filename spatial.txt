@@ -1,0 +1,13 @@
+spatial joins: 
+
+Vector Layer -- nybb.shp -ok  + OEM_Nurssing...001.shp - ok
+
+Vector - Data Management Tools - Join Attributes by Location 
+a. Base Layer : nybb
+b. Join Layer : OEM_Nursing...
+c. Fields to add : [...] - Select all - Ok 
+d. Join Type : 1-to-1
+
+run  - close
+
+i sarka button var click karun kontya hi dot var click kara

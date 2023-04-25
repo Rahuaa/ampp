@@ -1,0 +1,12 @@
+river :
+
+Vector Layer - Prac7D/ne....populated_places_simple.shp  + ne......rivers_lake_centerlines.shp
+
+Project - Properties - CRS -- ESRI:54032(Azimuthal) -apply - ok
+
+Vector - Geoprocessing tools -- buffer :
+a. input : rivers_lakes
+b. distance : 0.02
+run -- ok 
+
+display names - value : name 

@@ -1,0 +1,14 @@
+map design :
+
+Vector layer - IND-adm0 + maharashtra(administrative+coast+highway+location+natural+poi+water)
+IND_amd0 -- symbology - grayscale - outline black 
+focus om maharashtra
+
+Project -- New Print layout  --  give name -- Add Map -- drag -- lock 
+zoom more (focus on 1 area ) -- add map 
+add label -- name
+add label -- <h2>&copy;Copyright reserved</h2> <h1>by name</h1>
+add legend -- untick auto update if want manual enteries and if auto generated then double click to change 
+add scale -- make make relevant changes in properties
+add north arrow 
+Layout -- Export as Image -- dpi given in question 

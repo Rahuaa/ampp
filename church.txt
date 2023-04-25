@@ -1,0 +1,17 @@
+Digitalizing Map Data :
+
+Raster -- Chuch
+Properties - Pyramids - Right side mein Resolutions and select all and build pyramids 
+
+Settings - Options -- Digitizing -- tick the Enable snapping on.......
+
+Layer - Create LAyer - New SpatiaLite Layer -
+a. Database : create new file with own name
+b. Layer name : enter name 
+c.  Geometry : line 
+EPSG : 4167 (nahi hai to add karo)
+d. Name : enter name 
+Add to Fields List 
+Draw add line as per choice and Label se name display karo 
+
+same for point and polygon
