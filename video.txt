@@ -1,0 +1,95 @@
+MainActivity.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="383dp"
+        android:gravity="center"
+        android:text="Sita Ramam"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <VideoView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/videoView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/playButton"
+        android:text="Play"
+        app:layout_constraintTop_toBottomOf="@+id/videoView"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+-----------------------------------------------------------------------------------------------
+
+MainActivity.kt:
+
+package com.example.myapplication
+
+import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.MediaController
+import android.widget.VideoView
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var videoView: VideoView
+    private lateinit var mediaController: MediaController
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        var playButton = findViewById<Button>(R.id.playButton)
+
+        videoView = findViewById(R.id.videoView)
+        mediaController = MediaController(this)
+        videoView.setMediaController(mediaController)
+        videoView.setVideoURI(Uri.parse("android.resource://com.example.myapplication/${R.raw.srv}"))
+
+        playButton.setOnClickListener {
+            if(videoView.isPlaying){
+                videoView.pause()
+                playButton.text="Play"
+            } else {
+                videoView.start()
+                playButton.text="Pause"
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        videoView.stopPlayback()
+    }
+}
+
+-----------------------------------------------------------------------------------------------
+create a new resourse directory with resource type as raw and add the relevant video file in it.

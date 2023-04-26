@@ -1,0 +1,66 @@
+MainActivity.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="Selected Game: "/>
+
+</LinearLayout>
+
+-----------------------------------------------------------------------------------------------------------
+
+MainActivity.kt:
+
+package com.example.myapplication
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.TextView
+
+class MainActivity : AppCompatActivity() {
+
+    private val games = arrayOf(
+        "Minecraft",
+        "Fortnite",
+        "League of Legends",
+        "World of Warcraft",
+        "Overwatch",
+        "Call of Duty",
+        "Counter-Strike: Global Offensive",
+        "Rainbow Six Siege",
+        "Apex Legends",
+        "Valorant"
+    )
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val listView = findViewById<ListView>(R.id.listView)
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, games)
+        listView.adapter = adapter
+
+        listView.setOnItemClickListener { parent, view, position, id ->
+            val selectedItem = parent.getItemAtPosition(position) as String
+            val textView = findViewById<TextView>(R.id.textView)
+            textView.text = "Selected Game: $selectedItem"
+        }
+    }
+}
+

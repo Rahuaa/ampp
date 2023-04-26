@@ -1,0 +1,137 @@
+MainActivity.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_500"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/baseline_menu_24"
+        app:title="Menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+MainActivity.kt:
+
+package com.example.myapplication
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.toolbar))
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.mainmenu,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.notificationmenu -> {
+                Toast.makeText(this@MainActivity,"Notification", Toast.LENGTH_SHORT).show()
+                return true
+            }
+            R.id.adding -> {
+                Toast.makeText(this@MainActivity,"Add", Toast.LENGTH_SHORT).show()
+                return true
+            }
+            R.id.Settings -> {
+                Toast.makeText(this@MainActivity,"Settings", Toast.LENGTH_SHORT).show()
+                return true
+            }
+            R.id.Search -> {
+                Toast.makeText(this@MainActivity,"Search", Toast.LENGTH_SHORT).show()
+                return true
+            }
+            R.id.Compose -> {
+                Toast.makeText(this@MainActivity,"Compose Email", Toast.LENGTH_SHORT).show()
+                return true
+            }
+            R.id.Feedback -> {
+                Toast.makeText(this@MainActivity,"Feedback", Toast.LENGTH_SHORT).show()
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        menu?.getItem(4)?.setEnabled(false)
+        return super.onPrepareOptionsMenu(menu)
+    }
+}
+
+
+------------------------------------------------------------------------------------------------------
+
+Change in theme section of AndroidManifest.xml:
+
+
+android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+
+
+------------------------------------------------------------------------------------------------------
+
+Create new Android Resource Directory in res directory with resource type as menu and create a new menu resouce file in that new menuy directory with file name as mainmenu
+
+mainmenu.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/notificationmenu"
+        android:icon="@drawable/baseline_notifications_24"
+        app:showAsAction="always"
+        android:title="TODO" />
+
+    <item
+        android:id="@+id/adding"
+        android:icon="@drawable/baseline_add_24"
+        app:showAsAction="always"
+        android:title="TODO" />
+
+    <item
+        android:id="@+id/Settings"
+        android:title="Settings"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/Search"
+        android:title="Search"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/Compose"
+        android:title="Compose Email"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/Feedback"
+        android:title="Feedback"
+        app:showAsAction="never"/>
+</menu>
+
+-----------------------------------------------------------------------------------------------------
+
+Add relevant icons in drawable

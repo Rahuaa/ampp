@@ -1,0 +1,121 @@
+MainActivity.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nonclickbtn"
+        android:text="Non Clickable Notification"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clickbtn"
+        android:text="Clickable Notification"
+        app:layout_constraintTop_toBottomOf="@+id/nonclickbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+MainActivity.kt:
+
+package com.example.myapplication
+
+
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
+import android.graphics.Color
+import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import androidx.core.app.NotificationCompat
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var nonClickableNotificationManager: NotificationManager
+    private lateinit var clickableNotificationManager: NotificationManager
+    private val CHANNEL_ID = "my_channel_01"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val btnNonClickable = findViewById<Button>(R.id.nonclickbtn)
+        val btnClickable = findViewById<Button>(R.id.clickbtn)
+
+        nonClickableNotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        clickableNotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        //creating notifications
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val channel = NotificationChannel(CHANNEL_ID,"My Channel",NotificationManager.IMPORTANCE_HIGH)
+            channel.description = "My Application Description"
+            channel.enableLights(true)
+            channel.lightColor = Color.RED
+            nonClickableNotificationManager.createNotificationChannel(channel)
+            clickableNotificationManager.createNotificationChannel(channel)
+        }
+
+        //add click listener to non clickable button
+        btnNonClickable.setOnClickListener {
+            val notification = createNonClickableNotification()
+            nonClickableNotificationManager.notify(0,notification.build())
+        }
+
+        //add click listener to clickable button
+        btnClickable.setOnClickListener {
+            val notification = createClickableNotification()
+            clickableNotificationManager.notify(1,notification.build())
+        }
+    }
+
+    //functions
+    private fun createNonClickableNotification():NotificationCompat.Builder{
+        return NotificationCompat.Builder(this,CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_android_black_24dp)
+            .setContentTitle("Non Clickable Notification")
+            .setContentText("This is a non-clickable notification")
+            .setAutoCancel(true)
+    }
+
+    private fun createClickableNotification():NotificationCompat.Builder{
+
+        val intent = Intent(this,MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        val pendingIntent = PendingIntent.getActivity(this,1,intent,PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
+
+        return NotificationCompat.Builder(this,CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_android_black_24dp)
+            .setContentTitle("Clickable Notification")
+            .setContentText("This is a clickable notification")
+            .setAutoCancel(true)
+            .setContentIntent(pendingIntent)
+    }
+}
+
+--------------------------------------------------------------------------------------------
+
+Add to Manifest before <application...>
+
+<uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+<uses-permission android:name="android.permission.VIBRATE"/>

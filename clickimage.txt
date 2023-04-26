@@ -1,0 +1,61 @@
+MainActivity.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/pagebkg"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/abc"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        android:text="Chnage"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+----------------------------------------------------------------------------------------------------------------------------
+
+MainActivity.kt:
+
+package com.example.myapplication
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val imageView = findViewById<ImageView>(R.id.imageView)
+        val button = findViewById<Button>(R.id.button)
+
+        var counter = 0
+
+        button.setOnClickListener {
+            counter++
+
+            when (counter % 2) {
+                0 -> imageView.setImageDrawable(getDrawable(R.drawable.abc))
+                1 -> imageView.setImageDrawable(getDrawable(R.drawable.mno))
+            }
+        }
+    }
+}

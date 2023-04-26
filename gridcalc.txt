@@ -1,0 +1,315 @@
+MainActivity.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="421dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="2dp"
+        android:layout_weight="1"
+        android:textColor="@color/white"
+        android:ems="10"
+        android:gravity="right|center"
+        android:inputType="textPersonName"
+        android:text="0"
+        android:textSize="100dp"/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="4"
+        android:columnCount="4"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp">
+        <Button
+            android:id="@+id/b1"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="cEvent"
+            android:text="C"
+            android:textSize="40dp">
+        </Button>
+        <Button
+            android:id="@+id/b2"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="numberEvent"
+            android:text="0"
+            android:textSize="40dp">
+        </Button>
+        <Button
+            android:id="@+id/b3"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="operatorEvent"
+            android:text="*"
+            android:textSize="40dp">
+        </Button>
+        <Button
+            android:id="@+id/b4"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:onClick="operatorEvent"
+            android:text="-"
+            android:textSize="40dp">
+        </Button>
+    </GridLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="4"
+        android:columnCount="4"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp">
+        <Button
+            android:id="@+id/b5"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="numberEvent"
+            android:text="7"
+            android:textSize="40dp">
+        </Button>
+        <Button
+            android:id="@+id/b6"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="numberEvent"
+            android:text="8"
+            android:textSize="40dp">
+        </Button>
+        <Button
+            android:id="@+id/b7"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="numberEvent"
+            android:text="9"
+            android:textSize="40dp">
+        </Button>
+        <Button
+            android:id="@+id/b8"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:onClick="operatorEvent"
+            android:text="+"
+            android:textSize="40dp">
+        </Button>
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="4"
+        android:columnCount="4"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp">
+        <Button
+            android:id="@+id/b9"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="numberEvent"
+            android:text="4"
+            android:textSize="40dp">
+        </Button>
+        <Button
+            android:id="@+id/b10"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="numberEvent"
+            android:text="5"
+            android:textSize="40dp">
+        </Button>
+        <Button
+            android:id="@+id/b11"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="numberEvent"
+            android:text="6"
+            android:textSize="40dp">
+        </Button>
+        <Button
+            android:id="@+id/b12"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:onClick="operatorEvent"
+            android:text="/"
+            android:textSize="40dp">
+        </Button>
+    </GridLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="4"
+        android:columnCount="4"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp">
+        <Button
+            android:id="@+id/b13"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="numberEvent"
+            android:text="1"
+            android:textSize="40dp">
+        </Button>
+        <Button
+            android:id="@+id/b14"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="numberEvent"
+            android:text="2"
+            android:textSize="40dp">
+        </Button>
+        <Button
+            android:id="@+id/b15"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="numberEvent"
+            android:text="3"
+            android:textSize="40dp">
+        </Button>
+        <Button
+            android:id="@+id/b16"
+            android:layout_width="35pt"
+            android:layout_height="50pt"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:onClick="equalEvent"
+            android:text="="
+            android:textColor="@color/teal_200"
+            android:textSize="40dp">
+        </Button>
+    </GridLayout>
+
+
+</LinearLayout>
+
+---------------------------------------------------------------------------------------------------------
+
+MainActivity.kt:
+
+package com.example.myapplication
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+
+class MainActivity : AppCompatActivity() {
+    var isNewOp = true
+    var oldNumber = ""
+    var oper = "+"
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+    fun numberEvent(view: View) {
+        var editText = findViewById<EditText>(R.id.editText)
+        if (isNewOp)
+            editText.setText("")
+        isNewOp = false
+        var bclick : String = editText.text.toString()
+        var bselect : Button = view as Button
+        var b2= findViewById<Button>(R.id.b2)
+        val b5= findViewById<Button>(R.id.b5)
+        val b6= findViewById<Button>(R.id.b6)
+        val b7= findViewById<Button>(R.id.b7)
+        val b9= findViewById<Button>(R.id.b9)
+        val b10= findViewById<Button>(R.id.b10)
+        val b11= findViewById<Button>(R.id.b11)
+        val b13= findViewById<Button>(R.id.b13)
+        val b14= findViewById<Button>(R.id.b14)
+        val b15= findViewById<Button>(R.id.b15)
+        when(bselect.id){
+            b2.id -> bclick += "0"
+            b5.id -> bclick += "7"
+            b6.id -> bclick += "8"
+            b7.id -> bclick += "9"
+            b9.id -> bclick += "4"
+            b10.id -> bclick += "5"
+            b11.id -> bclick += "6"
+            b13.id -> bclick += "1"
+            b14.id -> bclick += "2"
+            b15.id -> bclick += "3"
+        }
+        editText.setText(bclick)
+    }
+    fun operatorEvent(view: View) {
+        var b12= findViewById<Button>(R.id.b12)
+        val b8= findViewById<Button>(R.id.b8)
+        val b3= findViewById<Button>(R.id.b3)
+        val b4= findViewById<Button>(R.id.b4)
+        isNewOp = true
+        var editText = findViewById<EditText>(R.id.editText)
+        oldNumber = editText.text.toString()
+        var bselect = view as Button
+        when (bselect.id) {
+            b12.id -> oper = "/"
+            b8.id -> oper = "+"
+            b3.id -> oper = "*"
+            b4.id -> oper = "-"
+        }
+    }
+    fun equalEvent(view: View) {
+        var editText= findViewById<EditText>(R.id.editText)
+        var newnum = editText.text.toString()
+        var result = 0.0
+        when (oper){
+            "+" -> result= oldNumber.toDouble() + newnum.toDouble()
+            "*" -> result= oldNumber.toDouble() * newnum.toDouble()
+            "/" -> result= oldNumber.toDouble() / newnum.toDouble()
+            "-" -> result= oldNumber.toDouble() - newnum.toDouble()
+        }
+        editText.setText(result.toString())
+    }
+    fun cEvent(view: View) {
+        var editText= findViewById<EditText>(R.id.editText)
+        editText.setText("0")
+
+    }
+}
