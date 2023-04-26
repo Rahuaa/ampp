@@ -15,6 +15,12 @@ Tick the Load in QGIS when done
 Bombay....modified -- Properties - Transparency - Global Opacity : 30-35%
 
 Aerial Imagery :
+if plugins not installed : Plugins -- manage and install plugins -- Settings : Tick the show also experimental plugins
+Add OSM place Search and OpenLayersPlugin
+
+If OSMPlaceSearch not showing then View - Panels - OSMPlaceSearch
+
+Web -- OpenLayers Plugin -- Open Street Map
 
 Search gateway of india on OpenPlaceSearch
 zoom
