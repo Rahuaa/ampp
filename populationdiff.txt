@@ -1,9 +1,0 @@
-raster layer - gld.00.60.asc 
-Symbology - render type : pseudocolor  -- interpolation : linear -- max : 240  -- ok again go to symbology and add color ramp 
-
-raster layer - gld.90.60.asc
-Symbology - pseudocolor -- interpolation : linear --color ramp - apply 
-
-raster - raster calc - o/p layer : select the location with file name : Popluation_Diff -- Output CRS : Project CRS  -- Expression : gld.00.60 -(minus) gld.90.60 -- ok
-
-Population_Diff -- Symbology -- pseudocolor -- min : -20000 and max : 600 -- Interpolation : Discrete -- Delete all colors and range -- click classify -- add 4 difff colors with values : -20000,-10,0,600  -- apply -- ok
